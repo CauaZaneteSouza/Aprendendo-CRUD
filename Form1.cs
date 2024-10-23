@@ -76,13 +76,42 @@ private void dtg_aluno_CellToolTipTextNeeded(object sender, DataGridViewCellTool
         }
 
         private void dtg_aluno_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//este código imprime os caracteres na label quando o usuário clica em alguma célula
+            lbl_id.Text = dtg_aluno.Rows[e.RowIndex].Cells[0].Value.ToString();
             TXT_NOME.Text = dtg_aluno.Rows[e.RowIndex].Cells[1].Value.ToString();
+            lbl_idade.Text = dtg_aluno.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string unidade = dtg_aluno.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string serie = dtg_aluno.Rows[e.RowIndex].Cells[4].Value.ToString();
+            cmb_seleciona.Text = dtg_aluno.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+            if (unidade =="B")
+            {
+                rbd_barroca.Checked = true;
+            }
+            else
+            {
+                rbd_floresta.Checked = true;
+            }
+            bool s = serie == "1" ? rbd_serie1.Checked = true : serie == "2" ? rbd_serie1.Checked = true : rbd_serie3.Checked = true;
         }
 
-        private void rbd_floresta_CheckedChanged(object sender, EventArgs e)
+        private void BTN_EXCLUI_Click(object sender, EventArgs e)
         {
-
+            string excluir;
+            if (TXT_NOME.Text != "" && TXT_idade.Text != "")
+            {
+                excluir = string.Format($"delete from {tabela} where id = {lbl_id.Text}");
+                int resultado = bd.executar_comandos(excluir);
+                Exibir_dados();
+                if (resultado== 1)
+                {
+                    MessageBox.Show("Deletado com sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao deletar");
+                }
+            }
         }
     }
 }
