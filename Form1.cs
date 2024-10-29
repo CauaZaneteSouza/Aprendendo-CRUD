@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -112,6 +113,42 @@ private void dtg_aluno_CellToolTipTextNeeded(object sender, DataGridViewCellTool
                     MessageBox.Show("Erro ao deletar");
                 }
             }
+        }
+
+        private void BTN_ALTERA_Click(object sender, EventArgs e)
+        {
+            string alterar;
+            string unidade = rbd_barroca.Checked ? "B" : "F";
+            int serie = rbd_serie1.Checked ? 1 : rbd_serie2.Checked ? 2 : 3;
+            string turma = cmb_seleciona.Text;
+            int idade;
+            if (TXT_NOME.Text != "" && int.TryParse(TXT_idade.Text, out idade))
+            {
+                alterar = string.Format($"Update {tabela} set nome = '{TXT_NOME.Text}',idade = '{idade}',unidade = '{unidade}',serie = '{serie}',turma = '{turma}',where id = {lbl_id.Text}");
+                int resultado = bd.executar_comandos(alterar);
+                if (resultado == 1)
+                {
+                    MessageBox.Show("Alterado com sucesso");
+                    Exibir_dados();
+                    limpa_tela();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao alterar");
+                }
+            }
+        }
+        private void btn_funcionar_Click(object sender, EventArgs e)
+        {
+            //Conectar ao banco
+            MySqlConnection c = new MySqlConnection("Persist security info = false; server = localhost;" + " database = bd_escola; user =root; pwd=;");
+            c.Open();
+            //Preparar o comando 
+            MySqlCommand cm = new MySqlCommand($"insert into {tabela} values(null ,'{TXT_NOME.Text}','{TXT_idade.Text}','B','2','{cmb_seleciona.Text}')", c);
+            //Executar o comando 
+            cm.ExecuteNonQuery();
+            //Fechar a conexão com o banco 
+            c.Clone();
         }
     }
 }

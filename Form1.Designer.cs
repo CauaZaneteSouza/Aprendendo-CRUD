@@ -50,6 +50,9 @@
             this.dtg_aluno = new System.Windows.Forms.DataGridView();
             this.cmb_seleciona = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lbl_id = new System.Windows.Forms.Label();
+            this.lbl_idade = new System.Windows.Forms.Label();
+            this.btn_funcionar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_aluno)).BeginInit();
@@ -73,17 +76,14 @@
             this.rbd_floresta.TabIndex = 1;
             this.rbd_floresta.Text = "Floresta";
             this.rbd_floresta.UseVisualStyleBackColor = true;
-            this.rbd_floresta.CheckedChanged += new System.EventHandler(this.rbd_floresta_CheckedChanged);
             // 
             // rbd_barroca
             // 
             this.rbd_barroca.AutoSize = true;
-            this.rbd_barroca.Checked = true;
             this.rbd_barroca.Location = new System.Drawing.Point(3, 14);
             this.rbd_barroca.Name = "rbd_barroca";
             this.rbd_barroca.Size = new System.Drawing.Size(62, 17);
             this.rbd_barroca.TabIndex = 0;
-            this.rbd_barroca.TabStop = true;
             this.rbd_barroca.Text = "Barroca";
             this.rbd_barroca.UseVisualStyleBackColor = true;
             // 
@@ -181,6 +181,7 @@
             this.BTN_EXCLUI.TabIndex = 12;
             this.BTN_EXCLUI.Text = "Excluir";
             this.BTN_EXCLUI.UseVisualStyleBackColor = true;
+            this.BTN_EXCLUI.Click += new System.EventHandler(this.BTN_EXCLUI_Click);
             // 
             // BTN_ALTERA
             // 
@@ -190,6 +191,7 @@
             this.BTN_ALTERA.TabIndex = 11;
             this.BTN_ALTERA.Text = "Alterar";
             this.BTN_ALTERA.UseVisualStyleBackColor = true;
+            this.BTN_ALTERA.Click += new System.EventHandler(this.BTN_ALTERA_Click);
             // 
             // BTN_CADASTRA
             // 
@@ -273,11 +275,39 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Turma";
             // 
+            // lbl_id
+            // 
+            this.lbl_id.AutoSize = true;
+            this.lbl_id.Location = new System.Drawing.Point(125, 13);
+            this.lbl_id.Name = "lbl_id";
+            this.lbl_id.Size = new System.Drawing.Size(0, 13);
+            this.lbl_id.TabIndex = 22;
+            // 
+            // lbl_idade
+            // 
+            this.lbl_idade.AutoSize = true;
+            this.lbl_idade.Location = new System.Drawing.Point(642, 27);
+            this.lbl_idade.Name = "lbl_idade";
+            this.lbl_idade.Size = new System.Drawing.Size(0, 13);
+            this.lbl_idade.TabIndex = 23;
+            // 
+            // btn_funcionar
+            // 
+            this.btn_funcionar.Location = new System.Drawing.Point(70, 351);
+            this.btn_funcionar.Name = "btn_funcionar";
+            this.btn_funcionar.Size = new System.Drawing.Size(75, 23);
+            this.btn_funcionar.TabIndex = 24;
+            this.btn_funcionar.Text = "button1";
+            this.btn_funcionar.UseVisualStyleBackColor = true;
+            // 
             // FRM_ALUNO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_funcionar);
+            this.Controls.Add(this.lbl_idade);
+            this.Controls.Add(this.lbl_id);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmb_seleciona);
             this.Controls.Add(this.dtg_aluno);
@@ -331,6 +361,9 @@
         private System.Windows.Forms.DataGridView dtg_aluno;
         private System.Windows.Forms.ComboBox cmb_seleciona;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_id;
+        private System.Windows.Forms.Label lbl_idade;
+        private System.Windows.Forms.Button btn_funcionar;
     }
 }
 
